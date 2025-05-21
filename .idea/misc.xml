@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.11 (DSAPIAdvPart2ScorePy)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (DSAPIAdvPart2ScorePy)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (SensorDataAnalysisPy)" project-jdk-type="Python SDK" />
 </project>
