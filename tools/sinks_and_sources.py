@@ -28,7 +28,7 @@ def get_source_data_stream(env, cfg, data):
             .map(lambda d: ScoreEvent.from_dict(d))
             .assign_timestamps_and_watermarks(
                 WatermarkStrategy
-                .for_bounded_out_of_orderness(Duration.of_millis(data_ts_delay))
+                .for_monotonous_timestamps()
                 .with_timestamp_assigner(MyTimestampAssigner())
             )
         )
@@ -39,7 +39,7 @@ def get_source_data_stream(env, cfg, data):
             env.from_source(
                 source=kafka_source,
                 watermark_strategy=WatermarkStrategy
-                .for_bounded_out_of_orderness(Duration.of_millis(data_ts_delay)),
+                .for_monotonous_timestamps(),
                 source_name='Kafka Source'
             )
             .map(json.loads, output_type=Types.MAP(Types.STRING(), Types.STRING()))

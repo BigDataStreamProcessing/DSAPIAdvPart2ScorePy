@@ -1,8 +1,7 @@
-# score_event_kafka_source.py
 from configparser import ConfigParser
 
+from pyflink.common import SimpleStringSchema
 from pyflink.datastream.connectors.kafka import KafkaSource, KafkaOffsetsInitializer
-from tools.score_event_schema import ScoreEventSchema
 
 
 class ScoreEventKafkaSource:
@@ -30,6 +29,6 @@ class ScoreEventKafkaSource:
             .set_topics(topic)
             .set_group_id("house-stats-app")
             .set_starting_offsets(KafkaOffsetsInitializer.earliest())
-            .set_value_only_deserializer(ScoreEventSchema())
+            .set_value_only_deserializer(SimpleStringSchema())
             .build()
         )
