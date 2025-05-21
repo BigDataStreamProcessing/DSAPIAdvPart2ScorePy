@@ -61,6 +61,6 @@ class MySQLSink:
                 house, start_date, end_date) 
                 values (?, ?, ?, ?, ?, ?) 
                 ON DUPLICATE KEY UPDATE
-                  how_many = ?, 
-                  sum_score = ?, 
-                  characters = ?;"""
+                  how_many = VALUES(how_many),
+                  sum_score = VALUES(sum_score),
+                  characters = VALUES(characters);"""
